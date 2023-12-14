@@ -1,3 +1,22 @@
+yajl (2.1.0-3ubuntu0.22.04.1) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: buffer overread in yajl_string_decode function
+    - debian/patches/CVE-2017-16516.patch: don't advance our end pointer until
+      we've checked we have enough buffer left and that the unicode escape is
+      approaching.
+    - CVE-2017-16516
+  * SECURITY UPDATE: integer overflow leading to heap memory corruption when
+    processing large (~2GB) inputs
+    - debian/patches/CVE-2022-24795.patch: catch integer overflow and
+      terminate the process with abort().
+    - CVE-2022-24795
+  * SECURITY UPDATE: memory leak in yajl_tree_parse function
+    - debian/patches/CVE-2023-33460.patch: fix memory leak problems by
+      releasing requested memory in time.
+    - CVE-2023-33460
+
+ -- Fabian Toepfer <fabian.toepfer@canonical.com>  Thu, 14 Dec 2023 14:06:32 +0100
+
 yajl (2.1.0-3build2) jammy; urgency=high
 
   * No change rebuild for ppc64el baseline bump.
